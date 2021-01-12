@@ -1,8 +1,8 @@
 <template>
     <div>
        <li
-         class="dropdown-option"
-         :class="{'isDisabled': disabled}"
+        class="dropdown-option"
+        :class="{'isDisabled': disabled}"
        >
          <slot></slot>
        </li>

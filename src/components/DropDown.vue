@@ -1,14 +1,15 @@
 <template>
     <div class="dropdown" ref="dropdownUl">
        <a href="#" type="button" class="btn btn-link" @click.prevent="toggle">{{ title }}</a>
-       <ul class="dropdown-menu" :style="{ display: 'block' }" v-if="dropDownVisible">
+       <ul v-if="dropDownVisible" class="dropdown-menu" :style="{ display: 'block' }">
           <slot></slot>
        </ul>
     </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, ref, onMounted, onUnmounted } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
+import useClickOutSide from '../hooks/useClickOutSide'
 export default defineComponent({
   name: 'DropDown',
   props: {
@@ -23,20 +24,13 @@ export default defineComponent({
       dropDownVisible.value = !dropDownVisible.value
     }
     const dropdownUl = ref<null | HTMLElement>(null)
-    const handler = (e: MouseEvent) => {
-      console.log(e)
-      if (dropdownUl.value) {
-        // 取反，表示当前点击区域在dropdown组件之外。同时要满足dropdown组件已经打开。这时候去关闭drowdown
-        if (!dropdownUl.value.contains(e.target as HTMLElement) && dropDownVisible.value) {
-          dropDownVisible.value = false
-        }
+    const isClickOutSide = useClickOutSide(dropdownUl)
+    watch(isClickOutSide, () => {
+      console.log(isClickOutSide)
+      console.log(dropDownVisible.value)
+      if (dropDownVisible.value && isClickOutSide.value) {
+        dropDownVisible.value = false
       }
-    }
-    onMounted(() => {
-      document.addEventListener('click', handler)
-    })
-    onUnmounted(() => {
-      document.removeEventListener('click', handler)
     })
     return {
       dropDownVisible,

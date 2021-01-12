@@ -1,6 +1,6 @@
 <template>
     <nav class="navbar navbar-light" style="background-color: #e3f2fd;">
-      <a class="navbar-brand" href="#">知道乎专栏</a>
+      <a class="navbar-brand" href="#">B乎专栏</a>
       <ul class="list-inline mb-0" v-if="!userInfo.isLogin">
           <li class="list-inline-item"><a href="#" class="btn btn-primary my-2">注册</a></li>
           <li class="list-inline-item"><a href="#" class="btn btn-info my-2">登录</a></li>

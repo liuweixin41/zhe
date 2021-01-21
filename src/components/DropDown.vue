@@ -26,8 +26,6 @@ export default defineComponent({
     const dropdownUl = ref<null | HTMLElement>(null)
     const isClickOutSide = useClickOutSide(dropdownUl)
     watch(isClickOutSide, () => {
-      console.log(isClickOutSide)
-      console.log(dropDownVisible.value)
       if (dropDownVisible.value && isClickOutSide.value) {
         dropDownVisible.value = false
       }

@@ -9,7 +9,7 @@
           <li class="list-inline-item"><button type="button" class="btn btn-link">欢迎你, {{ userInfo.name }}</button></li>
         <li class="list-inline-item">
           <dropdown :title="`你好 ${userInfo.name}`">
-            <dropdown-item><a href="#" class="dropdown-item">新建文章</a></dropdown-item>
+            <dropdown-item><router-link to="/create" class="dropdown-item">新建文章</router-link></dropdown-item>
             <dropdown-item><a href="#" class="dropdown-item">编辑资料</a></dropdown-item>
             <dropdown-item><a href="#" class="dropdown-item">退出登录</a></dropdown-item>
           </dropdown>

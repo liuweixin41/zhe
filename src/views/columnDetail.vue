@@ -2,10 +2,10 @@
   <div class="column-detail-page w-75 mx-auto">
       <div v-if="column" class="column-info row mb-4 border-bottom pb-4 align-items-center">
         <div class="col-3 text-center">
-          <img :src="column.avatar" :alt="column.title" class="round-circle border">
+          <img :src="column.avatar" :alt="column.title" class="round-circle border avatar">
         </div>
         <div class="col-9">
-          <h4>{{ cloumn.title }}</h4>
+          <h4>{{ column.title }}</h4>
           <p class="text-muted">{{ column.description }}</p>
         </div>
       </div>
@@ -14,10 +14,10 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, computed } from 'vue'
 import { useRoute } from 'vue-router'
-import { listData } from '../listData'
-import { myArticle } from '../myArticle'
+import { useStore } from 'vuex'
+import { IGlobalStore } from '../store/index'
 import postList from '../components/postList.vue'
 export default defineComponent({
   components: {
@@ -25,10 +25,14 @@ export default defineComponent({
   },
   setup () {
     const route = useRoute()
-
+    const store = useStore<IGlobalStore>()
     const currentId = +route.params.id
-    const column = listData.find(c => c.id === currentId)
-    const list = myArticle.filter(d => d.columnId === currentId)
+    const column = computed(() => {
+      return store.getters.getColumnByid(currentId)
+    })
+    const list = computed(() => {
+      return store.getters.getArticlesById(currentId)
+    })
     return {
       route,
       column,
@@ -38,6 +42,9 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-
+<style scoped lang="less">
+.avatar {
+  width: 100px;
+  height: 100px
+}
 </style>

@@ -1,16 +1,16 @@
-export interface ColumnProps {
+export interface IColumnProps {
   id: number;
   avatar?: string;
   title: string;
   description: string;
 }
 
-export const listData: ColumnProps[] = [
+export const listData: IColumnProps[] = [
   {
     id: 1,
     avatar: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1635022258,84940537&fm=26&gp=0.jpg',
-    title: '卢艳祖专栏',
-    description: '这里是卢艳祖的专栏文章'
+    title: '卢彦祖专栏',
+    description: '这里是卢彦祖的专栏文章'
   },
   {
     id: 2,

@@ -16,6 +16,7 @@
 import { defineComponent, reactive, PropType, onMounted } from 'vue'
 // 引入父组件中暴露出来的emitter
 import { emitter } from './validateForm.vue'
+
 const emailReg = /^[a-zA-Z0-9.!#$%&’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/
 
 interface RuleProp {

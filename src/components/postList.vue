@@ -17,13 +17,13 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-import { IdataProps } from '../myArticle'
+import { IArticleProps } from '../myArticle'
 
 export default defineComponent({
   props: {
     list: {
       required: true,
-      type: Array as PropType<IdataProps[]>
+      type: Array as PropType<IArticleProps[]>
     }
   },
   setup () {

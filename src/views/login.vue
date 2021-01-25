@@ -32,6 +32,7 @@ import { defineComponent, ref } from 'vue'
 import validateForm, { emitter } from '../components/validateForm.vue'
 import validateInput, { RulesProp } from '../components/validateInput.vue'
 import { useRouter } from 'vue-router'
+import { useStore } from 'vuex'
 export default defineComponent({
   name: 'login',
   components: {
@@ -40,6 +41,7 @@ export default defineComponent({
   },
   setup () {
     const router = useRouter()
+    const store = useStore()
 
     const emailVal = ref('')
     const emailRules: RulesProp = [
@@ -54,7 +56,9 @@ export default defineComponent({
 
     const onFormSubmit = (result: boolean) => {
       if (result) {
+        // 发个消息到validateForm， 调用emitter.emit('clear-input-val', true)
         emitter.emit('form-item-submited', true)
+        store.commit('loginByUserName')
         router.push({
           name: 'column',
           params: {

@@ -31,7 +31,7 @@ export default defineComponent({
       return store.getters.getColumnByid(currentId)
     })
     const list = computed(() => {
-      return store.getters.getArticlesById(currentId)
+      return store.getters.getArticlesByCid(currentId)
     })
     return {
       route,

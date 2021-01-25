@@ -6,7 +6,7 @@
           <li class="list-inline-item"><router-link to="/login" class="btn btn-outline-light my-2">登录</router-link></li>
       </ul>
        <ul v-else class="list-inline mb-0">
-          <li class="list-inline-item"><button type="button" class="btn btn-link">欢迎你, {{ userInfo.name }}</button></li>
+        <!-- <li class="list-inline-item"><button type="button" class="btn btn-link">欢迎你, {{ userInfo.name }}</button></li> -->
         <li class="list-inline-item">
           <dropdown :title="`你好 ${userInfo.name}`">
             <dropdown-item><router-link to="/create" class="dropdown-item">新建文章</router-link></dropdown-item>
@@ -20,8 +20,8 @@
 
 <script lang="ts">
 import { defineComponent, PropType } from 'vue'
-// import dropdown from './DropDown.vue'
-// import dropdownItem from './DropdownItem.vue'
+import dropdown from './DropDown.vue'
+import dropdownItem from './DropdownItem.vue'
 export interface UserProps {
   id?: number;
   name?: string;
@@ -36,8 +36,8 @@ export default defineComponent({
     }
   },
   components: {
-    // dropdown,
-    // dropdownItem
+    dropdown,
+    dropdownItem
   },
   setup () {
     return {}

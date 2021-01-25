@@ -1,15 +1,32 @@
 import { createStore } from 'vuex'
-import { listData, ColumnProps } from '../listData'
-import { myArticle, ArticleProps } from '../myArticle'
-import axios from 'axios'
-export { ColumnProps } from '../listData'
-export { ArticleProps } from '../myArticle'
+import { listData } from '../listData'
+import { myArticle } from '../myArticle'
+// import axios from 'axios'
 
 interface UserProps {
   isLogin: boolean;
   name?: string;
   id?: number;
   columnId?: number;
+}
+interface ImageProps {
+  _id?: string;
+  url?: string;
+  createAt?: string;
+}
+export interface ColumnProps {
+  _id: string;
+  title: string;
+  avatar?: ImageProps;
+  description: string;
+}
+export interface ArticleProps {
+  id: number;
+  title: string;
+  content: string;
+  image?: string;
+  createTime: string;
+  columnId: number;
 }
 
 export interface GlobalStore {
@@ -20,10 +37,10 @@ export interface GlobalStore {
 
 const store = createStore<GlobalStore>({
   state: {
-    columns: listData,
+    columns: [],
     articles: myArticle,
     user: {
-      isLogin: false,
+      isLogin: true,
       name: '王二丫',
       columnId: 1
     }
@@ -34,24 +51,24 @@ const store = createStore<GlobalStore>({
     },
     createArticle (state, newPost) {
       state.articles.push(newPost)
-    },
-    fetchcolumns (state, rawData) {
-      state.columns = rawData
     }
+    // fetchcolumns (state, rawData) {
+    //   state.columns = rawData
+    // }
   },
-  actions: {
-    fetchColumns (context) {
-      axios.get('/columns').then(res => {
-        context.commit('fetchcolumns', res.data)
-      })
-    }
-  },
+  // actions: {
+  //   fetchColumns (context) {
+  //     axios.get('/columns').then(res => {
+  //       context.commit('fetchcolumns', res.data)
+  //     })
+  //   }
+  // },
   getters: {
-    getColumnByid: (state) => (id: number) => {
-      return state.columns.find(c => c.id = id)
+    getColumnByid: (state) => (id: string) => {
+      return state.columns.find(c => c._id === id)
     },
-    getArticlesById: (state) => (Cid: number) => {
-      return state.articles.filter(a => a.columnId = Cid)
+    getArticlesByCid: (state) => (Cid: number) => {
+      return state.articles.filter(a => a.columnId === Cid)
     }
   }
 })

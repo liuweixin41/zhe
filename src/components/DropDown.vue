@@ -1,9 +1,11 @@
 <template>
     <div class="dropdown" ref="dropdownUl">
-       <a href="#" type="button" class="btn btn-link" @click.prevent="toggle">{{ title }}</a>
-       <ul v-if="dropDownVisible" class="dropdown-menu" :style="{ display: 'block' }">
-          <slot></slot>
-       </ul>
+      <a href="/" type="button" class="btn btn-outline-light my-2 dropdown-toggle" @click.prevent="toggle">
+        {{ title }}
+      </a>
+      <ul v-if="dropDownVisible" class="dropdown-menu" :style="{ display: 'block' }">
+        <slot></slot>
+      </ul>
     </div>
 </template>
 

@@ -29,6 +29,7 @@ export default defineComponent({
   },
   setup () {
     const store = useStore()
+    console.log('store', store)
     const userInfo = computed(() => store.state.user)
     return {
       userInfo

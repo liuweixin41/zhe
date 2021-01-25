@@ -1,11 +1,11 @@
-export interface IColumnProps {
+export interface ColumnProps {
   id: number;
   avatar?: string;
   title: string;
   description: string;
 }
 
-export const listData: IColumnProps[] = [
+export const listData: ColumnProps[] = [
   {
     id: 1,
     avatar: 'https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1635022258,84940537&fm=26&gp=0.jpg',

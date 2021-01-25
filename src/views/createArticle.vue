@@ -34,7 +34,7 @@
 import { defineComponent, ref } from 'vue'
 import { useRouter } from 'vue-router'
 import { useStore } from 'vuex'
-import { IGlobalStore, IArticleProps } from '../store/index'
+import { GlobalStore, ArticleProps } from '../store/index'
 import validateForm from '../components/validateForm.vue'
 import validateInput, { RulesProp } from '../components/validateInput.vue'
 
@@ -45,7 +45,7 @@ export default defineComponent({
   },
   setup () {
     const router = useRouter()
-    const store = useStore<IGlobalStore>()
+    const store = useStore<GlobalStore>()
 
     // 标题
     const titleVal = ref('')
@@ -64,7 +64,7 @@ export default defineComponent({
         // ES6 解构
         const { columnId } = store.state.user
         if (columnId) {
-          const newArticle: IArticleProps = {
+          const newArticle: ArticleProps = {
             id: new Date().getTime(),
             title: titleVal.value,
             content: contentVal.value,

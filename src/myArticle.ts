@@ -1,4 +1,4 @@
-export interface IArticleProps {
+export interface ArticleProps {
   id: number;
   title: string;
   content: string;
@@ -6,7 +6,7 @@ export interface IArticleProps {
   createTime: string;
   columnId: number;
 }
-export const myArticle: IArticleProps[] = [
+export const myArticle: ArticleProps[] = [
   {
     id: 1,
     title: '朝鲜的八大讲了些什么？',

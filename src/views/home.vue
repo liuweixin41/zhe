@@ -21,14 +21,14 @@
 import { defineComponent, computed } from 'vue'
 import columnList from '../components/ColumnLists.vue'
 import { useStore } from 'vuex'
-import { IGlobalStore } from '../store/index'
+import { GlobalStore } from '../store/index'
 export default defineComponent({
   name: 'home',
   components: {
     columnList
   },
   setup () {
-    const store = useStore<IGlobalStore>()
+    const store = useStore<GlobalStore>()
     const list = computed(() => store.state.columns)
     return {
       list
